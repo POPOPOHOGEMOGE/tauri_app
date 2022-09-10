@@ -27,8 +27,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import DrawMazeArea from "./Maze.jsx";
-import DrawTomatoArea from "./Tomato.jsx";
+import { MainArea } from "./MainArea.jsx";
+
+import ichimatsuicon from "./assets/ichimatsu.svg"
+
 
 const drawerWidth = 240;
 
@@ -90,23 +92,15 @@ function App() {
   };
 
   const [main_area, setMainArea] = useState("is_in_tomato");
-  
+
   const changeMainAreaToTomato = () => {
     setMainArea("is_in_tomato");
   };
-  const changeMainAreaToMaze = () => {
-    setMainArea("is_in_maze");
+  const changeMainAreaToIchimatsu = () => {
+    setMainArea("is_in_ichimatsu");
   };
 
-  function TomatoArea(){
-    return DrawTomatoArea();
-  } 
-  
-  function MazeArea(){
-    return DrawMazeArea();
-  } 
-  
-  
+
   const theme = useTheme();
 
   const color_theme = createTheme({
@@ -148,8 +142,11 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Tomato" />
             </ListItemButton>
-            <ListItemButton onClick={changeMainAreaToMaze}>
-              <ListItemText primary="Maze" />
+            <ListItemButton onClick={changeMainAreaToIchimatsu}>
+              <ListItemIcon>
+                <img src={ichimatsuicon} />
+              </ListItemIcon>
+              <ListItemText primary="Ichimatsu" />
             </ListItemButton>
           </List>
           <Divider />
@@ -184,8 +181,7 @@ function App() {
 
 
 
-            {main_area == "is_in_tomato" && <TomatoArea/>}
-            {main_area == "is_in_maze" && <MazeArea/>}
+            <MainArea main_area={main_area} />
 
           </Container >
         </Main>
