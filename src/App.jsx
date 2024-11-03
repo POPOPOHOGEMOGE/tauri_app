@@ -99,6 +99,21 @@ function App() {
   const changeMainAreaToIchimatsu = () => {
     setMainArea("is_in_ichimatsu");
   };
+  const changeMainAreaToMandelbrot = () => {
+    setMainArea("is_in_mandelbrot");
+  };
+
+  function AppBarTitle() {
+    if (main_area == "is_in_tomato") {
+        return "Tomato";
+    }
+    else if  (main_area == "is_in_ichimatsu") {
+        return "Ichimatsu";
+    }
+    else if  (main_area == "is_in_mandelbrot") {
+      return "Mandelbrot";
+  }
+}
 
 
   const theme = useTheme();
@@ -148,6 +163,12 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Ichimatsu" />
             </ListItemButton>
+            <ListItemButton onClick={changeMainAreaToMandelbrot}>
+              <ListItemIcon>
+                <img src={ichimatsuicon} />
+              </ListItemIcon>
+              <ListItemText primary="Mandelbrot" />
+            </ListItemButton>
           </List>
           <Divider />
           <List>
@@ -174,7 +195,7 @@ function App() {
                   <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" color="inherit" component="div">
-                  MiniTomato
+                  {AppBarTitle()}
                 </Typography>
               </Toolbar>
             </AppBar>

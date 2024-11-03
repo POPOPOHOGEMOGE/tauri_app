@@ -6,12 +6,10 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Switch from '@mui/material/Switch';
 
 export function Tomato() {
     const [output, setOutputText] = useState("");
     const [input, setInputText] = useState("");
-    const [loop, setLoop] = useState(false);
 
     async function tomato() {
         setOutputText(await invoke("run_tomato", { input }));
@@ -55,7 +53,6 @@ export function Tomato() {
                         {output}
                     </Typography>
                 </Box>
-                <Switch checked={loop} onChange={(e) => setLoop(e.target.checked)} />
             </Grid>
         </Grid>
     );
